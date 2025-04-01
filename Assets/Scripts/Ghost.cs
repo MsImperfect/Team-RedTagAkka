@@ -6,7 +6,7 @@ public class Ghost : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator.SetFloat("move", Random.Range(1, 100));
+        animator.SetFloat("move", Random.Range(0f, 1f));
     }
 
     // Update is called once per frame
