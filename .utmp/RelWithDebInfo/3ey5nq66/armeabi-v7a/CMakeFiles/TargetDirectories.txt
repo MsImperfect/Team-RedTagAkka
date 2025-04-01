@@ -1,0 +1,5 @@
+C:/Users/parne/OneDrive/Desktop/RedTagAkka/.utmp/RelWithDebInfo/3ey5nq66/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/parne/OneDrive/Desktop/RedTagAkka/.utmp/RelWithDebInfo/3ey5nq66/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/parne/OneDrive/Desktop/RedTagAkka/.utmp/RelWithDebInfo/3ey5nq66/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/parne/OneDrive/Desktop/RedTagAkka/.utmp/RelWithDebInfo/3ey5nq66/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/parne/OneDrive/Desktop/RedTagAkka/.utmp/RelWithDebInfo/3ey5nq66/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
