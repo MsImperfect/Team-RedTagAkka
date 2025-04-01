@@ -226,7 +226,8 @@ MonoBehaviour:
   _objectToSpawn: {fileID: 6389376637144759624, guid: 01caf5f287834b241ba8204747ba1c26,
     type: 3}
   _numberOfObjects: 5
-  _spawnSize: 5
+  _spawnSize: 15
+  _spawnDistance: 15
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

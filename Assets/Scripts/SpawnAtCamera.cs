@@ -11,6 +11,9 @@ public class SpawnAtCamera : MonoBehaviour
     [SerializeField]
     private float _spawnSize = 5f; // Size of the sphere around the camera
 
+    [SerializeField]
+    private float _spawnDistance = 5f; 
+
     void Start()
     {
         for (int i = 0; i < _numberOfObjects; i++)
@@ -27,7 +30,15 @@ public class SpawnAtCamera : MonoBehaviour
             return; // Exit if there's no main camera
         }
 
-        Vector3 spawnPosition = Camera.main.transform.position + (Random.insideUnitSphere * _spawnSize);
+        Vector3 spawnPosition;
+        if (_spawnSize > 0)
+        {
+            spawnPosition = Camera.main.transform.position + Camera.main.transform.forward * _spawnDistance + (Random.insideUnitSphere * _spawnSize);
+        }
+        else
+        {
+            spawnPosition = Camera.main.transform.position + Camera.main.transform.forward * _spawnDistance;
+        }
         GameObject spawnedObject = Instantiate(_objectToSpawn, spawnPosition, Quaternion.identity);
     }
 }

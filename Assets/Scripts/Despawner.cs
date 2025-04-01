@@ -14,6 +14,7 @@ public class ARTouchDestroy : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Destroy(gameObject);
+            Debug.Log("Destroyed");
         }
     }
 }
