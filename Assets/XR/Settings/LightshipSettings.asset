@@ -53,6 +53,6 @@ MonoBehaviour:
   _devicePlaybackSettings:
     _usePlayback: 0
     _playbackDatasetPath: 
-    _runPlaybackManually: 0
+    _runPlaybackManually: 1
     _loopInfinitely: 0
     _numberOfIterations: 1
