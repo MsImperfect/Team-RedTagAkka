@@ -7,22 +7,11 @@
 //    void Update()
 //    {
 //        // Detect mouse click on the object
-//        if (Input.GetMouseButtonDown(0))  // 0 corresponds to the left mouse button
-//        {
-//            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-//            RaycastHit hit;
 
-//            if (Physics.Raycast(ray, out hit))
-//            {
-//                // Check if the clicked object is the current game object
-//                if (hit.transform == transform)
-//                {
-//                    Destroy(gameObject);
-//                }
-//            }
 //        }
 //    }
 //}
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class ARTouchDestroy : MonoBehaviour
@@ -46,6 +35,21 @@ public class ARTouchDestroy : MonoBehaviour
                 }
             }
             Debug.Log("Destroyed");
+
         }
+        //else if (Input.GetMouseButtonDown(0))  // 0 corresponds to the left mouse button
+        //{
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RaycastHit hit;
+
+        //    if (Physics.Raycast(ray, out hit))
+        //    {
+        //        // Check if the clicked object is the current game object
+        //        if (hit.transform == transform)
+        //        {
+        //            Destroy(gameObject);
+        //        }
+        //    }
+        //}
     }
 }
