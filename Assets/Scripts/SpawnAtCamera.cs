@@ -1,44 +1,39 @@
+using System.Collections;
 using UnityEngine;
 
-public class SpawnAtCamera : MonoBehaviour
+public class RandomSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _objectToSpawn; // Prefab of the object to spawn (your ghost)
+    public GameObject[] objectsToSpawn; // Array of prefabs to spawn
+    public float minSpawnInterval = 0.5f; // Minimum time between spawns
+    public float maxSpawnInterval = 2f;  // Maximum time between spawns
+    public Vector3 spawnAreaMin;         // Minimum position for spawning
+    public Vector3 spawnAreaMax;         // Maximum position for spawning
 
-    [SerializeField]
-    private int _numberOfObjects = 10; // Number of objects to spawn
-
-    [SerializeField]
-    private float _spawnSize = 5f; // Size of the sphere around the camera
-
-    [SerializeField]
-    private float _spawnDistance = 5f; 
-
-    void Start()
+    private void Start()
     {
-        for (int i = 0; i < _numberOfObjects; i++)
-        {
-            SpawnObject();
-        }
+        StartCoroutine(SpawnObjects());
     }
 
-    void SpawnObject()
+    private IEnumerator SpawnObjects()
     {
-        if (Camera.main == null)
+        while (true)
         {
-            Debug.LogError("Main camera is null.  Make sure you have a camera tagged as 'MainCamera' in your scene.");
-            return; // Exit if there's no main camera
-        }
+            // Randomize spawn interval
+            float interval = Random.Range(minSpawnInterval, maxSpawnInterval);
+            yield return new WaitForSeconds(interval);
 
-        Vector3 spawnPosition;
-        if (_spawnSize > 0)
-        {
-            spawnPosition = Camera.main.transform.position + Camera.main.transform.forward * _spawnDistance + (Random.insideUnitSphere * _spawnSize);
+            // Choose a random object from the array
+            int randomIndex = Random.Range(0, objectsToSpawn.Length);
+
+            // Generate a random position within the defined area
+            Vector3 randomPosition = new Vector3(
+                Random.Range(spawnAreaMin.x, spawnAreaMax.x),
+                Random.Range(spawnAreaMin.y, spawnAreaMax.y),
+                Random.Range(spawnAreaMin.z, spawnAreaMax.z)
+            );
+
+            // Instantiate the object at the random position
+            Instantiate(objectsToSpawn[randomIndex], randomPosition, Quaternion.identity);
         }
-        else
-        {
-            spawnPosition = Camera.main.transform.position + Camera.main.transform.forward * _spawnDistance;
-        }
-        GameObject spawnedObject = Instantiate(_objectToSpawn, spawnPosition, Quaternion.identity);
     }
 }
