@@ -11,6 +11,7 @@ public class MoveTowardsCameraLockRotation : MonoBehaviour
     {
         if (mainCamera == null)
         {
+           
             Debug.LogError("No camera assigned to the script.");
             return;
         }
@@ -26,7 +27,14 @@ public class MoveTowardsCameraLockRotation : MonoBehaviour
 
         // Move towards the camera
         Vector3 directionToCamera = (mainCamera.transform.position - transform.position).normalized;
-        transform.position += directionToCamera * moveSpeed * Time.deltaTime;
+        if(Vector3.Distance(mainCamera.transform.position, gameObject.transform.position)>1)
+        {
+            transform.position += directionToCamera * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
+
     }
 }
-

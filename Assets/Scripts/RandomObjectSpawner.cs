@@ -5,13 +5,22 @@ public class RandomObjectSpawner : MonoBehaviour
 {
     public GameObject objectPrefab;
     public float spawnRadius = 10f;
-    public float minLifetime = 2f;
-    public float maxLifetime = 5f;
     public float minSpawnInterval = 1f;
     public float maxSpawnInterval = 4f;
+    public float moveSpeed = 5f;
+
+    private Camera mainCamera;
 
     void Start()
     {
+        mainCamera = Camera.main; // Automatically assign the main camera
+
+        if (mainCamera == null)
+        {
+            Debug.LogError("No Main Camera found! Make sure your camera is tagged 'MainCamera'.");
+            return;
+        }
+
         StartCoroutine(SpawnObjects());
     }
 
@@ -19,20 +28,30 @@ public class RandomObjectSpawner : MonoBehaviour
     {
         while (true)
         {
-
-            float waitTime = UnityEngine.Random.Range(minSpawnInterval, maxSpawnInterval);
+            float waitTime = Random.Range(minSpawnInterval, maxSpawnInterval);
             yield return new WaitForSeconds(waitTime);
 
-            float sqawnRadius = UnityEngine.Random.Range(1, spawnRadius);
-            //Vector3 spawnPosition = transform.position + (Vector3)(UnityEngine.Random.insideUnitCircle * sqawnRadius);
-            Vector3 spawnPosition = (Vector3)(UnityEngine.Random.insideUnitCircle * sqawnRadius);
+            // Generate a random spawn position around the camera
+            float spawnDistance = Random.Range(3, spawnRadius);
+            Vector3 randomOffset = Random.insideUnitSphere * spawnDistance;
+            randomOffset.y = Mathf.Abs(randomOffset.y); // Prevents spawning underground
+
+            Vector3 spawnPosition = mainCamera.transform.position + randomOffset;
+
             GameObject spawnedObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
 
+            // Start moving the object towards the camera
+            StartCoroutine(MoveTowardsCamera(spawnedObject));
+        }
+    }
 
-            float lifetime = UnityEngine.Random.Range(1, maxLifetime);
-
-
-            Destroy(spawnedObject, lifetime);
+    IEnumerator MoveTowardsCamera(GameObject obj)
+    {
+        while (obj != null)
+        {
+            Vector3 direction = (mainCamera.transform.position - obj.transform.position).normalized;
+            obj.transform.position += direction * moveSpeed * Time.deltaTime;
+            yield return null; // Wait for the next frame
         }
     }
 }
