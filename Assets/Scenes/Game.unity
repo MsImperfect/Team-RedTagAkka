@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &31536351
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 31536352}
-  m_Layer: 0
-  m_Name: Object
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &31536352
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31536351}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07998657, y: 0.19334412, z: 48.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &130090173
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,9 +130,6 @@ GameObject:
   - component: {fileID: 130090176}
   - component: {fileID: 130090175}
   - component: {fileID: 130090174}
-  - component: {fileID: 130090178}
-  - component: {fileID: 130090177}
-  - component: {fileID: 130090179}
   m_Layer: 0
   m_Name: AR Session
   m_TagString: Untagged
@@ -214,68 +180,6 @@ Transform:
   - {fileID: 1049036527}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &130090177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130090173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1760703bbd54c04488a8d10600262ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <trackablesChanged>k__BackingField:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1852839543}
-        m_TargetAssemblyTypeName: PlaneManager, Assembly-CSharp
-        m_MethodName: OnTrackablesChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_PlanePrefab: {fileID: 3931596750532723294, guid: 5851505a663b716458c294331f8c875b,
-    type: 3}
-  m_DetectionMode: 1
---- !u!114 &130090178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130090173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 1108564170}
-  m_OriginBaseGameObject: {fileID: 130090173}
-  m_CameraFloorOffsetObject: {fileID: 1049036526}
-  m_RequestedTrackingOriginMode: 2
-  m_CameraYOffset: 1.1176
---- !u!114 &130090179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130090173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9903dee0156f2874c9035d3bad871304, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ghostPrefab: {fileID: 1818775077514632822, guid: 4306ea890ba85b6479bebdd6ec6039c0,
-    type: 3}
-  targetSize: 5
 --- !u!1 &217026207
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,13 +190,14 @@ GameObject:
   m_Component:
   - component: {fileID: 217026209}
   - component: {fileID: 217026210}
+  - component: {fileID: 217026211}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &217026209
 Transform:
   m_ObjectHideFlags: 0
@@ -315,16 +220,35 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217026207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39e159a212fb01841b5dba54573ed09a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectsToSpawn: []
-  minSpawnInterval: 0.5
-  maxSpawnInterval: 2
-  spawnAreaMin: {x: 0, y: 0, z: 0}
-  spawnAreaMax: {x: 0, y: 0, z: 0}
+  _objectToSpawn: {fileID: 1818775077514632822, guid: 4306ea890ba85b6479bebdd6ec6039c0,
+    type: 3}
+  _numberOfObjects: 10
+  _spawnSize: 5
+  _spawnDistance: 5
+--- !u!114 &217026211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217026207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5d5b837c8ff10489febf5df6b4bf39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 1818775077514632822, guid: 4306ea890ba85b6479bebdd6ec6039c0,
+    type: 3}
+  spawnRadius: 10
+  minLifetime: 2
+  maxLifetime: 5
+  minSpawnInterval: 1
+  maxSpawnInterval: 4
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +346,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &794561601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1818775077514632822, guid: 4306ea890ba85b6479bebdd6ec6039c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1165190647}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &794561603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794561601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d15777f2eabbe4d8595abdda97b5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1108564170}
+  moveSpeed: 5
 --- !u!1 &1049036526
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,15 +793,20 @@ PrefabInstance:
       propertyPath: arCamera
       value: 
       objectReference: {fileID: 1108564165}
+    - target: {fileID: 9121656115828484291, guid: 4306ea890ba85b6479bebdd6ec6039c0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7759657620642897088, guid: 4306ea890ba85b6479bebdd6ec6039c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8683026664683162551, guid: 4306ea890ba85b6479bebdd6ec6039c0,
+    - targetCorrespondingSourceObject: {fileID: 1818775077514632822, guid: 4306ea890ba85b6479bebdd6ec6039c0,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1600372258}
+      addedObject: {fileID: 794561603}
     - targetCorrespondingSourceObject: {fileID: 8683026664683162551, guid: 4306ea890ba85b6479bebdd6ec6039c0,
         type: 3}
       insertIndex: -1
@@ -882,69 +831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  disappearChance: 0.3
---- !u!114 &1600372258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600372249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39e159a212fb01841b5dba54573ed09a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectsToSpawn:
-  - {fileID: 1600372249}
-  minSpawnInterval: 0.5
-  maxSpawnInterval: 2
-  spawnAreaMin: {x: 1, y: 1, z: 1}
-  spawnAreaMax: {x: 4, y: 4, z: 4}
---- !u!1 &1852839542
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1852839544}
-  - component: {fileID: 1852839543}
-  m_Layer: 0
-  m_Name: PlaneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1852839543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852839542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76797a2e0b229ac4299b97b8ded7429d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1852839544
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852839542}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.1756673, y: 0.06731683, z: 0.11401987}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  disappearChance: 80
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -952,6 +839,4 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 130090176}
   - {fileID: 217026209}
-  - {fileID: 1852839544}
-  - {fileID: 31536352}
   - {fileID: 1165190647}

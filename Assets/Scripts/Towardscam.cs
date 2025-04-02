@@ -1,22 +1,32 @@
 using UnityEngine;
 
-public class MoveTowardsCamera : MonoBehaviour
+public class MoveTowardsCameraLockRotation : MonoBehaviour
 {
-    public float speed = 5f; // Speed of movement
+    public Camera mainCamera; // Assign your main camera in the Inspector
+    public float moveSpeed = 5f; // Speed at which the object moves towards the camera
 
-    void Update()
+    private Quaternion initialRotation; // Store the initial rotation of the object
+
+    private void Start()
     {
-        // Get the position of the main camera
-        Vector3 cameraPosition = Camera.main.transform.position;
+        if (mainCamera == null)
+        {
+            Debug.LogError("No camera assigned to the script.");
+            return;
+        }
 
-        // Calculate direction from object to camera
-        Vector3 directionToCamera = (cameraPosition - transform.position).normalized;
+        // Store the object's initial rotation
+        initialRotation = transform.rotation;
+    }
 
-        // Move the object towards the camera
-        transform.position += directionToCamera * speed * Time.deltaTime;
+    private void Update()
+    {
+        // Lock rotation to its initial value
+        transform.rotation = initialRotation;
 
-        // Optional: Make the object face the camera
-        transform.LookAt(cameraPosition);
+        // Move towards the camera
+        Vector3 directionToCamera = (mainCamera.transform.position - transform.position).normalized;
+        transform.position += directionToCamera * moveSpeed * Time.deltaTime;
     }
 }
 
