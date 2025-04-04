@@ -51,7 +51,11 @@ public class RandomObjectSpawner : MonoBehaviour
         {
             Vector3 direction = (mainCamera.transform.position - obj.transform.position).normalized;
             obj.transform.position += direction * moveSpeed * Time.deltaTime;
-            yield return null; // Wait for the next frame
+            Vector3 cameraPosition = Camera.main.transform.position;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            // Apply the rotation to the object (adjust to only rotate around Y-axis if needed)
+            obj.transform.rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
+            yield return null; 
         }
     }
 }
