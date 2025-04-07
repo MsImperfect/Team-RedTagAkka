@@ -9,7 +9,7 @@ public class RandomObjectSpawner : MonoBehaviour
     public float maxSpawnInterval = 4f;
     public float moveSpeed = 5f;
 
-    private Camera mainCamera;
+    public Camera mainCamera;
 
     void Start()
     {
@@ -49,12 +49,13 @@ public class RandomObjectSpawner : MonoBehaviour
     {
         while (obj != null)
         {
-            Vector3 direction = (mainCamera.transform.position - obj.transform.position).normalized;
+            Vector3 cameraPosition = mainCamera.transform.position;
+            Vector3 direction = (cameraPosition - obj.transform.position).normalized;
             obj.transform.position += direction * moveSpeed * Time.deltaTime;
-            Vector3 cameraPosition = Camera.main.transform.position;
+            
             Quaternion rotation = Quaternion.LookRotation(direction);
             // Apply the rotation to the object (adjust to only rotate around Y-axis if needed)
-            obj.transform.rotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
+            obj.transform.rotation = Quaternion.Euler(0, rotation.eulerAngles.y, rotation.eulerAngles.z);
             yield return null; 
         }
     }
